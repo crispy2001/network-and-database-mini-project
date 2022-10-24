@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Create Container{% endblock title %}
+
+{% block content %}
+
+<div class = "h1 m-4 text-center">Create Container</div>
+<div class = "container ">
+	<div class = "row justify-content-center">
+		<form class="row g-3 needs-validation disk-form p5 m-2 p-4 pt-2 col-8" novalidate>
+			<div class="col-md-3">
+				<label for="containerName" class="form-label">Container name</label>
+				<input type="text" class="form-control" id="containerName" required placeholder="container name">
+				<div class="invalid-feedback">
+				Container name cannot be empty
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label for="numberOfDevice" class="form-label">Number of device</label>
+				<input type="text" class="form-control" id="numberOfDevice" required placeholder="please enter a number">
+				<div class="invalid-feedback">
+				Invalid input
+				</div>
+			</div>
+			
+			<!-- disk selection. -->
+			<!-- 用後端傳來的disk資料做勾選，如果不能選的話，就是用disable的勾勾 -->
+			<div class = "col-md-12">
+				<label for="disk" class="form-label">Disk selection</label>
+				<div class = "row">
+				{% for x in range(8) %}
+					<div class="col-md-3">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="nvme{{x}}n1" required>
+							<label class="form-check-label" for="invalidCheck">
+							nvme{{x}}n1
+							</label>
+							<div class="invalid-feedback">
+							You must agree before submitting.
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class = "row justify-content-center">
+			<button class="btn btn-intel" type="submit">Submit form</button>
+			</div>
+			</div>
+		</form>
+
+		<!-- onclick to copy raid command
+		我的想像上是在上面的form產生出command之後，能夠回傳到id=cmd的這邊。 -->
+		<div class = "col-8">
+			<div class="input-group p-2">
+				<input class="btn btn-intel input-group-text " onclick="copyTextFunction()" id = "copyBtn" value = "copy"></input>
+				<textarea class="form-control" aria-label="With textarea" value="" id="cmd"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+

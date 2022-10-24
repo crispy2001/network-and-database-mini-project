@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Create Volume{% endblock title %}
+
+{% block content %}
+
+<div class = "h1 m-4 text-center">Create Volume</div>
+
+<div class = "container ">
+	<div class = "row justify-content-center">
+		<form class="row g-3 needs-validation disk-form p5 m-2 p-4 pt-2 col-8" novalidate>
+			<div class="col-md-4">
+				<label for="volumeName" class="form-label">Volume name</label>
+				<input type="text" class="form-control" id="volumeName" required placeholder="volume name">
+				<div class="invalid-feedback">
+				Volume name cannot be empty
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label for="container" class="form-label">Container</label>
+				<select class="form-select" id="container" required>
+					<!-- 你要把你的volume建在哪個container上面 -->
+					<option selected disabled value="">Choose...</option>
+					{% for x in range(4) %}
+					<option>{{x}}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+				Please select a valid container.
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label for="numberOfDevice" class="form-label">Number of device</label>
+				<input type="text" class="form-control" id="numberOfDevice" required placeholder="please enter a number">
+				<div class="invalid-feedback">
+				Invalid input
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<label for="level" class="form-label">Raid level</label>
+				<select class="form-select" id="level" required>
+					<!-- 你要把你的volume建在哪個container上面 -->
+					<option selected disabled value="">Choose...</option>
+					<option>Raid 0</option>
+					<option>Raid 1</option>
+					<option>Raid 5</option>
+				</select>
+				<div class="invalid-feedback">
+				Please select a valid Raid level
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class = "row justify-content-center">
+			<button class="btn btn-intel" type="submit">Submit form</button>
+			</div>
+			</div>
+		</form>
+
+		<!-- onclick to copy raid command
+		我的想像上是在上面的form產生出command之後，能夠回傳到id=cmd的這邊。 -->
+		<div class = "col-8">
+			<div class="input-group p-2 ">
+				<input class="btn btn-intel input-group-text " onclick="copyTextFunction()" id = "copyBtn" value = "copy"></input>
+				<textarea class="form-control" aria-label="With textarea" value="" id="cmd"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
