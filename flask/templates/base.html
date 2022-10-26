@@ -11,32 +11,56 @@
 		<link href="{{url_for('static',filename='bootstrap-5.0.2-dist/css/bootstrap.min.css')}}" rel="stylesheet">
 		<link href="{{url_for('static',filename='my-style/my.css')}}" rel="stylesheet">
 
-        <!-- <script src="{{url_for('static',filename='my-style/jquery-3.6.1.js')}}"></script> -->
+        <script src="{{url_for('static',filename='my-style/js/jquery-3.6.1.js')}}"></script>
 
 	</head>
+
 <body class = "d-flex flex-column h-100">
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<div class="container-fluid">
-			<div class = "ps-3"></div>
-			<!-- <img src="{{url_for('static',filename='imgs/Intel_logo.svg')}}" alt=""  height="30" > -->
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav me-auto mb-2 mb-md-0">
-				<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">Home</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link" href="#">Drive</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link" href="#">Create Volume</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-				</li>
-			</ul>
+		<div class = "container">
+			<div class="container-fluid">
+				<div class = "ps-3"></div>
+				<!-- <img src="{{url_for('static',filename='imgs/Intel_logo.svg')}}" alt=""  height="30" > -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto mb-2 mb-md-0">
+						<li class="nav-item">
+						<a class="nav-link my-nav " href="/">Index</a>
+						</li>
+						<li class="nav-item">
+						<a class="nav-link my-nav" href="#">X</a>
+						</li>
+						<li class="nav-item">
+						<a class="nav-link my-nav" href="#">X</a>
+						</li>
+					</ul>
+					<ul class = "navbar-nav mb-2 mb-md-0 d-flex">
+						{% if current_user.is_authenticated %}
+						<li class="nav-item dropdown">
+							<a class="nav-link my-nav dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{username}}
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="#">Profile</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="logout">Log out</a></li>
+							</ul>
+						</li>
+						{% else %}
+						<li class="nav-item dropdown">
+							<a class="nav-link my-nav dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							  Visitor
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="login">Log in</a></li>
+							</ul>
+						</li>
+						{% endif %}	
+					</ul>
+	
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -49,7 +73,7 @@
 		{% endblock content %}
 	</main>
 
-	<footer class="footer mt-auto py-4 bg-light">
+	<footer class="mt-5 footer mt-auto py-4 bg-light">
 		<div class="p-4 text-center">
 			Copyright © :D 2022
 		</div>
@@ -57,8 +81,9 @@
 
 
 
-	<!-- <script src="{{url_for('static',filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js')}}"></script> -->
-	<script src="{{url_for('static',filename='my-style/my.js')}}"></script>
+	<script src="{{url_for('static',filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{url_for('static',filename='my-style/js/my.js')}}"></script>
+	<script src="{{url_for('static',filename='my-style/js/bootstrap-input-spinner.js')}}"></script>
 	
   </body>
 </html>

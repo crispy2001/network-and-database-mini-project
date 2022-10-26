@@ -7,12 +7,21 @@
 
 <div class = "container">
 	<div class = "row justify-content-center">
-		<form class="g-3 needs-validation login-form px-5 py-3 m-2 col-6 align-self-center bg-light" novalidate action = "/register" method = "post">
+		<form class="g-3 needs-validation login-form px-5 py-3 m-2 mb-5 col-6 align-self-center bg-light" novalidate action = "/register" method = "post">
+			<div class = "mb-2">	
+				{%if email_msg %}
+				<div class = "text-center" style = "    margin-top: 0.25rem;
+				font-size: .875em;
+				color: #dc3545;">
+					{{email_msg}}
+				</div>
+				{%endif %}
+			</div>
 			<div class="mb-2">
 				<div>
 					<label >User Name</label>
 					<div class = "col">
-						<input type="text" class="form-control" id="username" name = "username" placeholder="" required>
+						<input type="text" class="form-control" id="username" name = "username" value = {{username}} required>
 						<div class="invalid-feedback">
 							username cannot be null
 						</div>
@@ -24,11 +33,9 @@
 					<label >Email</label>
 					<div class = "col">
 						<input type="text" class="form-control" id="email" name = "email" placeholder="" required>
-						{%if msg %}
 						<div class="invalid-feedback">
-							{{msg}}
+							password cannot be null
 						</div>
-						{%endif %}
 					</div>
 				</div>
 			</div>
@@ -36,7 +43,7 @@
 				<div>
 					<label >Password</label>
 					<div class = "col">
-						<input type="password" class="form-control" id="password" name = "password" placeholder="" required>
+						<input type="password" class="form-control" id="password" name = "password" value = {{password}} placeholder="" required>
 						<div class="invalid-feedback">
 							password cannot be null
 						</div>
